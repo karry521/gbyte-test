@@ -1,0 +1,594 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* .demo{
+        color: #B4A9A8;
+    } */
+}
+
+/* 全局变量 */
+body {
+    /* font-family: S; */
+}
+
+/* 头部样式 */
+.header {
+    z-index: 59;
+    /* background: rgba(255, 255, 255, 0.7); */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.03);
+
+    li {
+        padding: 1.55rem 2.5rem 1.55rem 2.5rem;
+        font-weight: 400;
+        cursor: pointer;
+    }
+
+    @media(min-width:1000px) {
+        li:hover {
+            background: white;
+            color: black;
+            font-weight: 600;
+        }
+    }
+
+    @media(max-width:1000px) {
+        z-index: 59;
+        /* background: none; */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+        -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.03);
+
+        li {
+            padding: 1rem .5rem;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        li:hover {
+            color: #282828;
+        }
+
+    }
+
+    /* .ulTop::after {
+        position: absolute;
+        top: 14px;
+        left: -11px;
+        width: 100vw;
+        height: 1px;
+        content: "";
+        background: rgba(255, 255, 255, 0.3);
+    } */
+
+    .meunOpen::before {
+        content: '';
+        position: absolute;
+        top: 13%;
+        left: 0;
+        width: 1.5rem;
+        height: 10px;
+        border-top: 2px white solid;
+        border-bottom: 2px white solid;
+        animation: buttonDown1 linear .2s;
+    }
+
+    .meunOpen::after {
+        content: '';
+        position: absolute;
+        top: 45%;
+        left: 0;
+        width: 1.5rem;
+        height: 10px;
+        border-bottom: 2px white solid;
+        animation: buttonDown2 linear .2s;
+    }
+
+    .meunOff::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1.5rem;
+        height: 2px;
+        background-color: white;
+        animation: buttonUp1 linear .2s forwards;
+    }
+
+    .meunOff::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1.5rem;
+        height: 2px;
+        background-color: white;
+        animation: buttonUp2 linear .2s forwards;
+    }
+}
+
+@keyframes buttonUp1 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes buttonUp2 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes buttonDown1 {
+    from {
+        top: 40%;
+        height: 2px;
+    }
+
+    to {
+        top: 13%;
+        height: 10px;
+    }
+}
+
+@keyframes buttonDown2 {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 45%;
+    }
+}
+
+
+/* 底部样式 */
+.footer {
+    @media (max-width:1000px) {
+        .downArrow::after {
+            content: "";
+            position: absolute;
+            top: .2rem;
+            right: .5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            background: url('/section/downArrow2.svg') no-repeat center center;
+            background-size: contain;
+            transform: rotate(0deg);
+            transition: transform linear 0.2s;
+        }
+
+        .upArrow::after {
+            content: "";
+            position: absolute;
+            top: .2rem;
+            right: .5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            transform: rotate(180deg);
+            background: url('/section/downArrow2.svg') no-repeat center center;
+            background-size: contain;
+            transition: transform linear 0.2s;
+        }
+    }
+}
+
+
+/* 首页-横屏轮播图 */
+.banner1 {
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        width: 3rem;
+        border-radius: 5px;
+    }
+
+    .disable {
+        background-color: blue;
+    }
+}
+
+/* 首页-竖屏轮播图 */
+.banner2 {
+    @media(min-width:1000px) {
+        .swiper-pagination-vertical.swiper-pagination-bullets {
+            right: 3rem;
+        }
+    }
+
+    @media(max-width:1000px) {
+        .swiper-pagination-vertical.swiper-pagination-bullets {
+            right: 1.5rem;
+            top: 69%;
+        }
+    }
+
+    .swiper-pagination-bullet {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        margin-bottom: 2rem !important;
+    }
+
+    .swiper-pagination-bullet::before {
+        content: '';
+        display: block;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        top: -2px;
+        left: -3px;
+        background-color: rgb(59 130 246);
+        border-radius: 50%;
+        border: cornsilk 3px solid;
+        z-index: 1;
+    }
+
+    .swiper-pagination-bullet.swiper-pagination-bullet-active::after {
+        content: '';
+        display: block;
+        position: relative;
+        width: 26px;
+        height: 26px;
+        top: -25px;
+        left: -6px;
+        border-radius: 50%;
+        animation: banner-animation 5s linear;
+        background-color: rgb(59 130 246);
+    }
+
+}
+
+@keyframes banner-animation {
+    0% {
+        clip-path: polygon(0 0, 50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0);
+    }
+
+    12.5% {
+        clip-path: polygon(0 0, 50% 50%, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0);
+    }
+
+    25% {
+        clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0%, 50% 0);
+    }
+
+    37.5% {
+        clip-path: polygon(0 0, 50% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 0, 50% 0);
+    }
+
+    50% {
+        clip-path: polygon(0 0, 50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0);
+    }
+
+    62.5% {
+        clip-path: polygon(0 0, 50% 50%, 50% 100%, 50% 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0);
+    }
+
+    75% {
+        clip-path: polygon(0 0, 50% 50%, 0 100%, 0 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0);
+    }
+
+    87.5% {
+        clip-path: polygon(0 0, 50% 50%, 0 50%, 0 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0);
+    }
+
+    100% {
+        clip-path: polygon(0 0, 50% 50%, 0 0, 0 100%, 49% 100%, 100% 100%, 100% 52%, 100% 0, 50% 0);
+
+    }
+}
+
+
+/* 首页-旗下品牌 */
+.braandBody1:hover,
+.braandBody2:hover,
+.braandBody3:hover,
+.braandBody4:hover {
+    .brandLogo1 {
+        animation: brand1 1.5s infinite;
+    }
+
+    .brandLogo11 {
+        animation: brand2 1.5s infinite;
+    }
+
+    .brandLogo2 {
+        animation: brand1 1.5s infinite;
+    }
+
+    .brandLogo12 {
+        animation: brand2 1.5s infinite;
+    }
+
+    .brandLogo3 {
+        animation: brand1 1.5s infinite;
+    }
+
+    .brandLogo13 {
+        animation: brand2 1.5s infinite;
+    }
+
+    .brandLogo4 {
+        animation: brand1 1.5s infinite;
+    }
+
+    .brandLogo14 {
+        animation: brand2 1.5s infinite;
+    }
+}
+
+@keyframes brand1 {
+    0% {
+        top: -17%;
+    }
+
+    50% {
+        top: -21%;
+    }
+
+    100% {
+        top: -17%;
+    }
+}
+
+@keyframes brand2 {
+    0% {
+        top: 28%;
+    }
+
+    50% {
+        top: 25%;
+    }
+
+    100% {
+        top: 28%;
+    }
+}
+
+
+/* 首页-发展历程 */
+.banner4 {
+    .befoer1::before {
+        content: '';
+        position: absolute;
+        top: 89%;
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px rgba(255, 255, 255, 0.25) solid;
+    }
+
+    .befoer2::before {
+        content: '';
+        position: absolute;
+        top: 87.5%;
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px rgba(255, 255, 255, 0.25) solid;
+    }
+
+    .s4-myBefore {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: #282828;
+    }
+
+    .swiper1 .swiper-wrapper .swiper-slide h2,
+    .swiper2 .swiper-wrapper,
+    .swiper2 .swiper-wrapper .swiper-slide,
+    .swiper2 .swiper-wrapper .swiper-slide .textContent {
+        visibility: hidden;
+    }
+
+    .swiper1 .swiper-wrapper .swiper-slide p {
+        color: rgba(40, 40, 40, 0.48);
+    }
+
+    .swiper1 .swiper-wrapper .swiper-slide.swiper-slide-active h2,
+    .swiper2 .swiper-wrapper .swiper-slide.swiper-slide-active,
+    .swiper2 .swiper-wrapper .swiper-slide.swiper-slide-active .textContent {
+        visibility: visible;
+    }
+
+    .swiper1 .swiper-wrapper .swiper-slide.swiper-slide-active p {
+        color: black;
+    }
+
+    /* 伪元素样式 */
+    .swiper1 .swiper-wrapper .swiper-slide::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 42.5%;
+        width: 50px;
+        height: 50px;
+        background: url('/section/home_swiper3_two.svg') no-repeat center;
+    }
+
+    .swiper1 .swiper-wrapper .swiper-slide.swiper-slide-active::before {
+        content: '';
+        position: absolute;
+        background: url('/section/home_swiper3_one.svg') no-repeat center;
+    }
+
+    .swiper2 .swiper-wrapper .swiper-slide .banner4 .diasabled {
+        color: #B4A9A8;
+    }
+
+    .swiper2 .banner_prev:hover,
+    .swiper2 .banner_next:hover {
+        div {
+            background: #0633FF;
+            box-shadow: 0px 0px 3px gray;
+        }
+    }
+
+    .diasabled div {
+        border: 1px #C1C6D7 solid;
+        background: #D8E0F2 !important;
+    }
+}
+
+
+/* 乐数简介 */
+.about {
+
+    /* 经营理念图片背景处理 */
+    .imgContainer {
+        position: relative;
+    }
+
+    /* 经营理念图片背景处理 */
+    .imgContainer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 15.92%, rgba(0, 0, 0, 0.1) 100%);
+        z-index: 1;
+        border-radius: 24px;
+        width: 100%;
+    }
+}
+
+
+/* 联系我们 */
+.bg-custom {
+    position: relative;
+}
+
+.bg-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 60%);
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+/* 员工福利图片动画 */
+.lft-photo {
+    max-width: 550px;
+    max-height: 550px;
+    margin: 0 auto;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    transition: transform 0.5s ease-in-out;
+    animation: transform 25s ease-in-out infinite alternate both !important;
+    transform-style: preserve-3d;
+    animation: moveAround 8s linear infinite;
+  }
+
+  .overflow-hidden1 {
+    overflow: hidden !important;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @keyframes transform {
+    0%,
+    100% {
+      border-radius: 58% 37% 54% 46%/55% 48% 52% 45%;
+    }
+
+    14% {
+      border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+    }
+
+    28% {
+      border-radius: 54% 46% 38% 62%/49% 65% 30% 51%;
+    }
+
+    42% {
+      border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
+    }
+
+    56% {
+      border-radius: 61% 39% 62% 33%/65% 50% 50% 30%;
+    }
+
+    70% {
+      border-radius: 50% 50% 34% 61%/56% 63% 32% 44%;
+    }
+
+    84% {
+      border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+    }
+  }
+
+  /* 员工福利文字动画 */
+  .fade-in-2s {
+    animation: fadeInUp 1s .2s ease both;
+    -webkit-animation: fadeInUp 1s .2s ease both;
+    -moz-animation: fadeInUp 1s .2s ease both;
+  }
+
+  .fade-in-6s {
+    animation: fadeInUp 1s .6s ease both;
+    -webkit-animation: fadeInUp 1s .6s ease both;
+    -moz-animation: fadeInUp 1s .6s ease both;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(30px)
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0)
+    }
+  }
+
+
+  @-moz-keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      -moz-transform: translateY(30px)
+    }
+
+    100% {
+      opacity: 1;
+      -moz-transform: translateY(0)
+    }
+  }
+ 
+  .js-scroll {
+    opacity: 0;
+    transition: opacity 500ms;
+  }
+
+  .section {
+    width: 614.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 0 0 120px;
+    overflow: hidden;
+    position: relative;
+  }
