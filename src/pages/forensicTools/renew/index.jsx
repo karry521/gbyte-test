@@ -118,7 +118,7 @@ const Renew = ({ product }) => {
             })
 
             if (result.data.code !== 200) { // 验证未通过
-                location.replace('/forensicTools/register')
+                alert(result.data.msg)
                 return
             }
 
