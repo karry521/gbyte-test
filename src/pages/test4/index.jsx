@@ -22,7 +22,7 @@ const Test = () => {
     useEffect(() => {
 
         // 发送事件
-        socket.emit('user-account', { email: 'junyuan@gbyte.com' })
+        socket.emit('user-account', { email: 'hxl@gbyte.com' })
 
         // **监听消息**
         socket.on('user-subscribe-update', (result) => {

@@ -66,8 +66,8 @@ const Pricing = ({ product }) => {
                 })
             })
 
-            setBusinessData(newBusinessData)
-            setIndividualsData(newIndividualsData)
+            setBusinessData(newBusinessData.sort((a,b) => a.id - b.id))
+            setIndividualsData(newIndividualsData.sort((a,b) => a.id - b.id))
 
             if (userType === 'business') {
                 setNowPage(0)
