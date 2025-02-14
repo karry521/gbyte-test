@@ -4,7 +4,7 @@ import Banner from "@/components/Home/Body/Banner";
 import Section1 from "@/components/Home/Body/Section1";
 import Section2 from "@/components/Home/Body/Section2";
 import Section3 from "@/components/Home/Body/Section3";
-import Section4 from "@/components/Home/Body/Section4";
+// import Section4 from "@/components/Home/Body/Section4";
 import Footer from "@/components/Home/Footer";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
       <Section1 />
       <Section2 />
       {/* <Section3 /> */}
-      <Section4 />
+      {/* <Section4 /> */}
       <Footer />
     </>
   );
