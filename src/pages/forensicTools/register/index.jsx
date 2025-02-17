@@ -15,6 +15,7 @@ const Register = () => {
 
     // 获取当前Tab页的背景宽度
     useEffect(() => {
+        console.log('环境：：：', process.env.NODE_ENV)
         if (tabWidthRef.current.length > 0) {
             const width1 = tabWidthRef.current[1].offsetWidth
             const width2 = tabWidthRef.current[2].offsetWidth
