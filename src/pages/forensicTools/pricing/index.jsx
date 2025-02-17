@@ -53,7 +53,8 @@ const Pricing = ({ product }) => {
                     id: item.id,
                     title: item.name,
                     price: (Number(item.price) / 100).toLocaleString(),
-                    list: item.json.list
+                    list: item.json.list,
+                    priority: item.priority
                 })
             })
 
@@ -62,12 +63,13 @@ const Pricing = ({ product }) => {
                     id: item.id,
                     title: item.name,
                     price: (Number(item.price) / 100).toLocaleString(),
-                    list: item.json.list
+                    list: item.json.list,
+                    priority: item.priority
                 })
             })
 
-            setBusinessData(newBusinessData.sort((a,b) => a.id - b.id))
-            setIndividualsData(newIndividualsData.sort((a,b) => a.id - b.id))
+            setBusinessData(newBusinessData.sort((a, b) => Number(b.priority) - Number(a.priority)))
+            setIndividualsData(newIndividualsData.sort((a, b) => Number(b.priority) - Number(a.priority)))
 
             if (userType === 'business') {
                 setNowPage(0)

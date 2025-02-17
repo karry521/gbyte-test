@@ -47,7 +47,8 @@ const Renew = ({ product }) => {
                     id: item.id,
                     title: item.name,
                     price: (Number(item.price) / 100).toLocaleString(),
-                    list: item.json.list
+                    list: item.json.list,
+                    priority: item.priority
                 })
             })
 
@@ -56,12 +57,13 @@ const Renew = ({ product }) => {
                     id: item.id,
                     title: item.name,
                     price: (Number(item.price) / 100).toLocaleString(),
-                    list: item.json.list
+                    list: item.json.list,
+                    priority: item.priority
                 })
             })
 
-            setBusinessData(newBusinessData)
-            setIndividualsData(newIndividualsData)
+            setBusinessData(newBusinessData.sort((a, b) => Number(b.priority) - Number(a.priority)))
+            setIndividualsData(newIndividualsData.sort((a, b) => Number(b.priority) - Number(a.priority)))
 
             if (userType === 'business') {
                 setNowPage(0)
@@ -118,7 +120,7 @@ const Renew = ({ product }) => {
             })
 
             if (result.data.code !== 200) { // 验证未通过
-                alert(result.data.msg)
+                location.replace('/forensicTools/register')
                 return
             }
 
